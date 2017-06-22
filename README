@@ -1,7 +1,9 @@
 azide - a zsh ide
 shoehorned together by: Kyle Dixler
 
-This project is heavily based on hchbaw's auto-fu and is in the public domain
+This project is basically a set of zsh tools
+
+
 
    https://github.com/hchbaw/auto-fu.zsh
 
@@ -24,7 +26,9 @@ are also a lot of cool things in there.
 
 included are my personal dotfiles and azide.zsh
 
-in .zshrc.pre add:
-   source path/to/azide.zsh
+in .zshrc add:
+   source path/to/auto-fu.zsh
+   source path/to/grml.zsh
+
 
 
