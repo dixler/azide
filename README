@@ -3,7 +3,7 @@ shoehorned together by: Kyle Dixler
 
 This project is basically a set of zsh tools
 
-
+This project is heavily based on hchbaw's auto-fu and is in the public domain
 
    https://github.com/hchbaw/auto-fu.zsh
 
