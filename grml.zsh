@@ -1388,6 +1388,8 @@ if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
         printf '%s' ${terminfo[rmkx]}
     }
     function zle-line-init () {
+        auto-fu-init
+        zle line-reset
         zle-smkx
     }
     function zle-line-finish () {

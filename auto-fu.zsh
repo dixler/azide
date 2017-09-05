@@ -51,7 +51,7 @@ afu-register-zle-expand-or-complete () {
    local rawzle=".${afufun#*+}"
    local code=${"$(<=(cat <<"EOT"
       $afufun () {
-         isTyping=0
+         afu_in_p=0
          zle $rawzle
       return 0
       }
@@ -66,7 +66,7 @@ auto-fu-init () {
    local auto_fu_init_p=1
    local ps
    {
-      local afu_in_p=0
+      local afu_in_p=1
       local afu_paused_p=0
       zstyle -s ':auto-fu:var' postdisplay ps
       [[ -z ${ps} ]] || POSTDISPLAY="$ps"
@@ -133,7 +133,7 @@ auto-fu-maybe () {
 }
 
 auto-fu () {
-   isTyping=0
+   afu_in_p=0
    cursor_cur="$CURSOR"
    buffer_cur="$BUFFER"
    with-afu-completer-vars zle complete-word
@@ -143,7 +143,7 @@ auto-fu () {
 
    if [[ "$buffer_cur[1,cursor_cur]" == "$buffer_new[1,cursor_cur]" ]]; then
       CURSOR="$cursor_cur"
-      isTyping=1
+      afu_in_p=1
 
       if [[ "$buffer_cur" != "$buffer_new" ]] || ((cursor_cur != cursor_new))
       then afu_in_p=1; {
