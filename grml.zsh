@@ -1388,9 +1388,6 @@ if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
         printf '%s' ${terminfo[rmkx]}
     }
     function zle-line-init () {
-        zle_highlight=(default:"fg=white,bold")
-        auto-fu-init
-        zle reset-prompt
         zle-smkx
     }
     function zle-line-finish () {
@@ -2364,7 +2361,7 @@ function prompt_grml_precmd () {
     emulate -L zsh
     local grmltheme=grml
     local -a left_items right_items
-    left_items=(rc change-root pid at user path vcs percent newline)
+    left_items=(rc change-root pid at user path vcs percent)
     right_items=()
 
     prompt_grml_precmd_worker

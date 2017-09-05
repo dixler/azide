@@ -29,7 +29,7 @@ afu-register-zle-accept-line () {
   local rawzle=".${afufun#*+}"
   local code=${"$(<=(cat <<"EOT"
   $afufun () {
-    if (( isTyping == 1 )); then
+    if (( afu_in_p == 1 )); then
         BUFFER="$buffer_cur"
     fi
     __accepted=($WIDGET ${=NUMERIC:+-n $NUMERIC} "$@")
@@ -133,6 +133,7 @@ auto-fu-maybe () {
 }
 
 auto-fu () {
+   isTyping=0
    cursor_cur="$CURSOR"
    buffer_cur="$BUFFER"
    with-afu-completer-vars zle complete-word
@@ -174,6 +175,7 @@ afu-comppost () {
       zle -M "$compstate[list_lines]($compstate[nmatches]) too many matches..."
    }
 }
+
 
 afu-install
 afu-register-zle-accept-line afu+accept-line
