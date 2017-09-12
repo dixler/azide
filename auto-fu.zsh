@@ -52,7 +52,10 @@ afu-register-zle-expand-or-complete () {
    local code=${"$(<=(cat <<"EOT"
       $afufun () {
          afu_in_p=0
+         # we can handle completion functions in here
+         completion_started=1
          zle $rawzle
+         completion_started=0
       return 0
       }
       zle -N $afufun
@@ -63,6 +66,7 @@ EOT
 
 # Entry point.
 auto-fu-init () {
+   completion_started=0
    local auto_fu_init_p=1
    local ps
    {
@@ -136,6 +140,7 @@ auto-fu () {
    afu_in_p=0
    cursor_cur="$CURSOR"
    buffer_cur="$BUFFER"
+   #{sleep 0.1; kill -CONT $$} & 2> /dev/null
    with-afu-completer-vars zle complete-word
    cursor_new="$CURSOR"
    buffer_new="$BUFFER"
