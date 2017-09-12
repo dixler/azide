@@ -1,3 +1,4 @@
+<img src="https://raw.githubusercontent.com/go0d/azide/master/preview.gif" /> 
 azide - a zsh ide
 shoehorned together by: Kyle Dixler
 
